@@ -4,17 +4,23 @@
 //Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        Map<Integer, Integer> map = new HashMap<>();
-        for(int i =0; i<nums.length; i++){
-            int comp = target - nums[i];
-            if(map.containsKey(comp)){
-                return new int[] {map.get(comp), i};
-            }
-            else{
-                map.put(nums[i],i);
-            }
+    public int reverse(int x) {
+        int result = 0;
+        int a;
+        int k =0;
+        
+        if(x<0) {
+            k=1;
+            x = x*-1;
         }
-        return new int[] {-1, -1};
+
+        while(x>0){
+            a = x%10;
+            x = x/10;
+            if(result > Integer.MAX_VALUE/10 || (result == Integer.MAX_VALUE / 10 && a > 7)) return 0;
+            if(result < Integer.MIN_VALUE/10 || (result == Integer.MIN_VALUE / 10 && a < -8)) return 0;
+            result = result*10 + a;
+        } 
+        return k==0 ? result: (result*-1);
     }
 }
