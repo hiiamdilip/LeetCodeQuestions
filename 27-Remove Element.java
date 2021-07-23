@@ -20,6 +20,7 @@
 // Note that the five elements can be returned in any order.
 // It does not matter what you leave beyond the returned k (hence they are underscores).
 
+//Method 1
 class Solution {
     public int removeElement(int[] nums, int val) {
        int i =0; 
@@ -32,5 +33,19 @@ class Solution {
          }else i++;
        }
         return j;
+    }
+}
+
+//Method 2
+class Solution {
+    public int removeElement(int[] nums, int val) {
+    int i = 0;
+    for (int j = 0; j < nums.length; j++) {
+        if (nums[j] != val) {
+            nums[i] = nums[j];
+            i++;
+        }
+    }
+    return i;
     }
 }
