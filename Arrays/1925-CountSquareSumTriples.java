@@ -17,10 +17,7 @@ class Solution {
         }
         for(int i=1;i<=n;i++){
             for(int j=1;j<=n;j++){
-               //if(squareSet.contains((i*i) + (j*j))) count++;
-                int z = (i*i) + (j*j);
-                int k = (int) Math.sqrt(z);
-                if(k*k == z && k<=n) count++;
+                if(squareSet.contains((i*i) + (j*j))) count++;
             }
         }
         return count;
