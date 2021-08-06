@@ -24,3 +24,16 @@ class Solution {
         return (count==3);
     }
 }
+
+//Method 2:
+// Here the question says to check whether the number has 3 divisors or not. So the number is clearly a square of any prime. As then only it will have 3 divisors. The 3 divisors will be 1 , n and the prime number.
+// E.g n=49 , so the divisors are 1,7,and 49. You don't have other divsors for this. So the approach is to find if the number's sqaure root is prime or not.
+class Solution {
+    public boolean isThree(int n) {
+        if(n<4 ) return false;
+        int res = (int)Math.sqrt(n);
+        for(int i=2;i*i<n;i++){
+            if(res%i ==0) return false;
+        }
+        return true;
+}}
