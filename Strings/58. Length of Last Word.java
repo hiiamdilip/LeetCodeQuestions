@@ -15,6 +15,7 @@
 // Input: s = "luffy is still joyboy"
 // Output: 6
   
+//Method 1:
 class Solution {
   public int lengthOfLastWord(String s) {
      int count = 0;
@@ -29,4 +30,16 @@ class Solution {
      }
      return count;
   }
+}
+
+//Method 2:
+class Solution {
+    public int lengthOfLastWord(String s) {
+        int count =0;
+        for(int i = s.length()-1 ; i >= 0; i--){
+           if(s.charAt(i) != ' ') count++;
+            if(s.charAt(i) == ' ' && i != s.length()-1 && count != 0) break;
+        }
+        return count;
+    }
 }
