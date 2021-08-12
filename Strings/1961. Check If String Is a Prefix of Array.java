@@ -16,3 +16,14 @@
 // Output: false
 // Explanation:
 // It is impossible to make s using a prefix of arr.
+
+class Solution {
+    public boolean isPrefixString(String s, String[] words) {
+        String temp = "";
+        for(int i = 0; i < words.length; i++){
+           temp += words[i];
+           if(s.length() == temp.length()) return s.equals(temp);
+        }
+        return false;
+    }
+}
