@@ -31,6 +31,7 @@
 // Input: nums = [-1,-2,-3], k = 1
 // Output: 2
 
+//Method 1:
 class Solution {
     public int findPairs(int[] nums, int k) {
        Arrays.sort(nums);
@@ -47,6 +48,27 @@ class Solution {
                   j++;
               }
           }
+       }
+        return count;
+    }
+}
+
+//Method 1:
+class Solution {
+    public int findPairs(int[] nums, int k) {
+       
+       int count = 0;
+       Map<Integer, Integer> map = new HashMap<>();
+       for(int num: nums){
+          map.put(num, map.getOrDefault(num,0)+1); 
+       }
+       for(int num : map.keySet()){
+            if(map.containsKey(num + k)){
+                if(k==0){
+                   if(map.get(num) >1 ) count++;
+                }
+                else count++;
+            }
        }
         return count;
     }
