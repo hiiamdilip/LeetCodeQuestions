@@ -28,3 +28,24 @@ class Solution {
         }
     }
 }
+
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> list = new ArrayList<>();
+        if( root == null) return list;
+        
+        Stack<TreeNode> s = new Stack<>();
+        while(!s.isEmpty() || root != null){
+            if(root != null){
+                s.add(root);
+                root = root.left;
+            }else{
+                root = s.pop();
+                list.add(root.val);
+                root = root.right;
+            }
+        }
+        return list;
+    }
+}
