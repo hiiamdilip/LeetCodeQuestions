@@ -36,6 +36,8 @@ class Solution {
     }
 }
 
+// Method 2
+// do inorder traversal which should ideally give sorted array for BST, if array is not sorted then return false
 class Solution {
     public boolean isValidBST(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
