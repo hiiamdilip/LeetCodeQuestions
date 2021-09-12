@@ -16,6 +16,7 @@
  *     }
  * }
  */
+//Method 1:
 class Solution {
     public boolean isValidBST(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
@@ -58,5 +59,21 @@ class Solution {
             if(list.get(i-1) >= list.get(i)) return false;
         }
         return true;
+    }
+}
+
+//Method 3:
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+       return helper(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+    
+    public boolean helper(TreeNode root, long lower, long higher){
+        if(root == null) return true;
+        
+        return (root.val > lower 
+                && root.val < higher) 
+                && (helper(root.left, lower, root.val)) 
+                && (helper(root.right, root.val, higher));
     }
 }
