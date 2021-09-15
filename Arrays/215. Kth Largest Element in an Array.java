@@ -21,3 +21,23 @@ class Solution {
         return queue.peek();
     }
 }
+
+
+// Input: nums = ["3","6","7","10"], k = 4
+// Output: "3"
+// Explanation:
+// The numbers in nums sorted in non-decreasing order are ["3","6","7","10"].
+// The 4th largest integer in nums is "3".
+
+import java.math.BigInteger;
+class Solution {
+    public String kthLargestNumber(String[] nums, int k) {
+        Queue<BigInteger> queue = new PriorityQueue<>();
+        
+        for(String s : nums){
+            queue.offer(new BigInteger(s));
+            if(queue.size() > k) queue.poll();
+        }
+        return String.valueOf(queue.peek());
+    }
+}
