@@ -20,8 +20,8 @@ public static void printLeafNodesIteratively(TreeNode root)
 		{ 
 			TreeNode node = stack.pop(); 
 			if (node.left == null && node.right == null) result.add(node.value);
-			if (node.right != null) stack.add(node.right); 
 			if (node.left != null) stack.add(node.left);
+			if (node.right != null) stack.add(node.right); 
 		}
 	}
 
