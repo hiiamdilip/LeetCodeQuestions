@@ -41,3 +41,16 @@ class Solution {
         return String.valueOf(queue.peek());
     }
 }
+
+//For Kth min
+class Solution {
+    public int findKthLargest(int[] nums, int k) {
+        Queue<Integer> queue = new PriorityQueue<>(Comparator.reverseOrder());
+        
+        for(int element : nums){
+            queue.offer(element);
+            if(queue.size() > k) queue.poll();
+        }
+        return queue.peek();
+    }
+}
