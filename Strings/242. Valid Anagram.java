@@ -39,3 +39,21 @@ class Solution {
     return true;
 }
 }
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        List<Character> list = new ArrayList<>();
+        
+        for(char c : s.toCharArray()){
+            list.add(c);
+        }
+        
+        for(char c : t.toCharArray()){
+            if(list.contains(c))
+                list.remove(list.indexOf(c));
+            else return false;
+        }
+        
+        return (list.size() == 0);
+    }
+}
