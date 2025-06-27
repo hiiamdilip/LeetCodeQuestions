@@ -80,3 +80,35 @@ class Solution {
         return result;
     }
 }
+
+Optimized easy version to remove dulplicates
+
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> result = new HashSet();
+        Arrays.sort(nums);
+        for(int i =0; i<nums.length - 2; i++){
+            int left = i+1;
+            int right = nums.length -1;
+            int target = -1 * nums[i];
+            while(left < right){
+                int currentSum = nums[left] + nums[right];
+                if(target == currentSum){
+                    List<Integer> list = new ArrayList();
+                    list.add(nums[i]);
+                    list.add(nums[left]);
+                    list.add(nums[right]);
+                    result.add(list);
+                    left++;
+                    right--;
+                } else if(target < currentSum){
+                    right--;
+                }
+                else{
+                    left++;
+                }
+            }
+        }
+        return new ArrayList<>(result);
+    }
+}
