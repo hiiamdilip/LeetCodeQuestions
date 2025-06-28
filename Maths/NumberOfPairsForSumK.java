@@ -9,7 +9,7 @@ Output = 3
 Example 3: nums = [1, 2, 3], k = 12
 Output = 0
 
-Example 4: nums = [1,4,4,5,5,5,6,6,11], k =1
+Example 4: nums = [1,4,4,5,5,5,6,6,11], k =11
 Output = 6
 
 public class Main
