@@ -30,16 +30,3 @@ class Solution {
         return high;
     }
 }
-
-
-class Solution {
-    public int mySqrt(int x) {
-        for(int i = x/2; i>=0; i--){
-            int d = i*i;
-            if(d <= x){
-                return i;
-            }
-        }
-        return 1;
-    }
-}
