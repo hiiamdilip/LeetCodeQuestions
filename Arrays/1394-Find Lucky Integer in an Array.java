@@ -61,3 +61,5 @@ class Solution {
         return result;
     }
 }
+
+method 1 and 3 are actually same
