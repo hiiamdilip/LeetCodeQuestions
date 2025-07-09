@@ -19,3 +19,5 @@
         return ExpectedSum - actualSum; 
     }
 }
+
+same as problem 41
