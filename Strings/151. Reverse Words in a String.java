@@ -42,3 +42,29 @@ class Solution {
        return sbr.toString().trim();
     }
 }
+
+
+class Solution {
+    public String reverseWords(String s) {
+        int i =0; 
+        int N = s.length();
+        StringBuilder result = new StringBuilder();
+
+        while(i < N){
+            while( i<N && s.charAt(i) == ' ') i++;
+            int j = i;
+            while( j<N && s.charAt(j) != ' ') j++;
+            String word = s.substring(i, j);
+            if(!word.isEmpty()){
+                if(result.length() == 0){
+                    result.append(word);
+                } else {
+                    result.insert(0, word + ' ');
+                }
+            }
+            i = j;
+        }
+    
+        return result.toString();
+    }
+}
