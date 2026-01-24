@@ -36,3 +36,23 @@ class Solution {
        
     }
 }
+
+Solution 2 using Queue
+
+    lass Solution {
+    public int firstUniqChar(String s) {
+        Queue<Integer> queue = new ArrayDeque<>();
+        int[] freq = new int[26];
+
+        for(int i =0; i<s.length(); i++){
+            int c = s.charAt(i) - 'a';
+            freq[c]++;
+            queue.offer(i);
+
+            while(!queue.isEmpty() && freq[s.charAt(queue.peek()) - 'a'] > 1){
+                queue.poll();
+            }
+        }
+        return queue.isEmpty() ? -1: queue.peek();
+    }
+}
