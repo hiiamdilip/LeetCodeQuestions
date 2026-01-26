@@ -46,3 +46,40 @@ class Solution {
         return list;
     }
 }
+
+Solution 2 : Using Priority Queue
+
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        Map<String, Integer> freq = new HashMap<>();
+
+        for(String s : words){
+            freq.put(s, freq.getOrDefault(s, 0) +1);
+        }
+
+        PriorityQueue<String> minHeap = new PriorityQueue<>(
+            (a,b) -> {
+                int fa = freq.get(a);
+                int fb = freq.get(b);
+
+                if(fa != fb) return fa -fb;
+                return b.compareTo(a);
+            }
+        );
+
+        for(String w : freq.keySet()){
+            minHeap.offer(w);
+            if(minHeap.size() > k) minHeap.poll();
+        }
+
+        List<String> result = new ArrayList();
+
+        for(int i =0; i<k; i++){
+            result.add(minHeap.poll());
+        }
+
+        Collections.reverse(result);
+
+        return result;
+    }
+}
