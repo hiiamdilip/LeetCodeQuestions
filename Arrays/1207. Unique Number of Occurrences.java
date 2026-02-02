@@ -17,8 +17,9 @@ Output: true
 class Solution {
     public boolean uniqueOccurrences(int[] arr) {
         Map<Integer, Integer> map = new HashMap();
+
+        //this can be set as well
         Map<Integer, Integer> map2 = new HashMap();
-        List<Integer> list = new ArrayList();
 
         for(int num : arr){
             map.put(num, map.getOrDefault(num, 0) +1);
