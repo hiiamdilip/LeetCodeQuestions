@@ -1,39 +1,52 @@
+//Solution 1 using two queue, push friendly but pop and lookup costly
 class MyStack {
 
-    Queue<Integer> queue1;
-    Queue<Integer> queue2;
-    int top;
+    private Queue<Integer> q1;
+    private Queue<Integer> q2;
     
     public MyStack() {
-       queue1 = new LinkedList<>(); 
-       queue2 = new LinkedList<>(); 
+       q1 = new ArrayDeque<>();
+       q2 = new ArrayDeque<>();
     }
     
     public void push(int x) {
-        top = x;
-        queue1.add(x);
-        
+       q1.offer(x);
     }
     
     public int pop() {
-        while(queue1.size() > 1){
-            top = queue1.remove();
-            queue2.add(top);
-        }
-        
-        int result = queue1.remove();
-        Queue<Integer> temp = queue1;
-        queue1 = queue2;
-        queue2 = temp;
-        return result;
+       while(q1.size() > 1){
+        q2.offer(q1.poll());
+       }
+
+       int top = q1.poll();
+
+       Queue<Integer> temp = new ArrayDeque<>();
+       temp = q1;
+       q1 = q2;
+       q2 = temp;
+
+       return top;
     }
     
     public int top() {
-        return top;
+       while(q1.size() > 1){
+        q2.offer(q1.poll());
+       }
+
+       int top = q1.peek();
+       q2.offer(q1.poll());
+
+       Queue<Integer> temp = new ArrayDeque<>();
+       temp = q1;
+       q1 = q2;
+       q2 = temp;
+
+       return top;
+
     }
     
     public boolean empty() {
-        return queue1.isEmpty();
+        return q1.isEmpty() && q2.isEmpty();
     }
 }
 
