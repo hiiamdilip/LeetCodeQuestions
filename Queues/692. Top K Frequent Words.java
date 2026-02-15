@@ -29,21 +29,22 @@ class Solution {
           bucket[entry.getValue()].add(entry.getKey());
        }
         
-       List<String> list = new ArrayList<>(); 
-        
-       for(int i = bucket.length -1 ; i> 0; i--){
-          if(bucket[i] == null) continue;
-          if(list.size() == k) break;
-          else{
-              Collections.sort(bucket[i]);
-              for(String element : bucket[i]){
-                  if(list.size() == k) break;
-                  list.add(element);
-              }
-          }
-       }
-        
-        return list;
+       ArrayList<String> result = new ArrayList<>();
+        int count = 0;
+
+        for(int i = bucket.length-1; i>=0; i--){
+            if(bucket[i] == null) continue;
+            else{
+                Collections.sort(bucket[i]);
+                for(String word : bucket[i]){
+                    if(count == k) break;
+                    result.add(word);
+                    count++;
+                }
+            }
+        }
+
+        return result;
     }
 }
 
