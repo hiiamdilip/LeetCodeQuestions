@@ -28,3 +28,25 @@ class Solution {
         return 1 + Math.max(dfs(root.left), dfs(root.right));
     }
 }
+
+Solution 2 - single pass - o(n) previous solution is o(n2)
+
+class Solution {
+    public boolean isBalanced(TreeNode root) {
+        return height(root) != -1;
+    }
+
+    public int height(TreeNode root){
+        if(root == null) return 0;
+
+        int leftH = height(root.left);
+        if(leftH == -1) return -1;
+
+        int rightH = height(root.right);
+        if(rightH == -1) return -1;
+
+        if(Math.abs(leftH- rightH) > 1) return -1;
+
+        return Math.max(leftH, rightH) +1;
+    }
+}
