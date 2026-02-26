@@ -15,15 +15,16 @@
  */
 class Solution {
     public boolean isBalanced(TreeNode root) {
-      if(root == null) return true;
-        
-      return isBalanced(root.left) 
-             && isBalanced(root.right) 
-             && Math.abs(helper(root.left)- helper(root.right)) <2;
+        if(root == null) return true;
+
+        if(Math.abs(dfs(root.left)-dfs(root.right)) > 1) return false;
+
+        return isBalanced(root.left) && isBalanced(root.right);
     }
-    
-    public int helper(TreeNode root){
+
+    public int dfs(TreeNode root){
         if(root == null) return 0;
-        return 1+ Math.max(helper(root.left),helper(root.right));
+
+        return 1 + Math.max(dfs(root.left), dfs(root.right));
     }
 }
