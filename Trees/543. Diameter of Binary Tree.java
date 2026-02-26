@@ -49,3 +49,24 @@ class Solution {
         return Math.max(left, right) +1;
     }
 }
+
+SOlution 2 - o(n2) - solution one is pass 1 - o(n)
+
+class Solution {
+   
+    public int diameterOfBinaryTree(TreeNode root) {
+        if(root == null) return 0;
+
+        int leftH = dfs(root.left);
+        int rightH = dfs(root.right);
+
+        int result = leftH + rightH;
+
+        return Math.max(result, Math.max(diameterOfBinaryTree(root.left), diameterOfBinaryTree(root.right)));
+    }
+
+    public int dfs(TreeNode root){
+        if(root == null) return 0;
+        return Math.max(dfs(root.left), dfs(root.right)) +1;
+    }
+}
